@@ -241,6 +241,8 @@ bool fill_ismrmrd_header(ISMRMRD::IsmrmrdHeader& h, const std::string& study_dat
         {
             ISMRMRD::StudyInformation study;
 
+            if (h.studyInformation)
+                study = h.studyInformation.get();
             if(study_date_needed && !study_date.empty())
             {
                 study.studyDate.set(study_date);
