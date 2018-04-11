@@ -1051,8 +1051,8 @@ getAcquisition(bool flash_pat_ref_scan, const Trajectory &trajectory, long dwell
     quat[2] = scanhead.sSliceData.aflQuaternion[2]; // Z
     quat[3] = scanhead.sSliceData.aflQuaternion[3]; // W
     ISMRMRD::ismrmrd_quaternion_to_directions(quat,
-                                              ismrmrd_acq.phase_dir(),
                                               ismrmrd_acq.read_dir(),
+                                              ismrmrd_acq.phase_dir(),
                                               ismrmrd_acq.slice_dir());
 
     //std::cout << "scanhead.ulScanCounter         = " << scanhead.ulScanCounter << std::endl;
