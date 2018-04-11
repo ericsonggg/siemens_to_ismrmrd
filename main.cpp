@@ -1046,13 +1046,13 @@ getAcquisition(bool flash_pat_ref_scan, const Trajectory &trajectory, long dwell
     // In the Siemens convention the quaternion corresponds to a rotation matrix with columns P R S
     // Siemens stores the quaternion as (W,X,Y,Z)
     float quat[4];
-    quat[0] = scanhead.sSliceData.aflQuaternion[1]; // X
-    quat[1] = scanhead.sSliceData.aflQuaternion[2]; // Y
-    quat[2] = scanhead.sSliceData.aflQuaternion[3]; // Z
-    quat[3] = scanhead.sSliceData.aflQuaternion[0]; // W
+    quat[0] = scanhead.sSliceData.aflQuaternion[0]; // X
+    quat[1] = scanhead.sSliceData.aflQuaternion[1]; // Y
+    quat[2] = scanhead.sSliceData.aflQuaternion[2]; // Z
+    quat[3] = scanhead.sSliceData.aflQuaternion[3]; // W
     ISMRMRD::ismrmrd_quaternion_to_directions(quat,
-                                              ismrmrd_acq.phase_dir(),
                                               ismrmrd_acq.read_dir(),
+                                              ismrmrd_acq.phase_dir(),
                                               ismrmrd_acq.slice_dir());
 
     //std::cout << "scanhead.ulScanCounter         = " << scanhead.ulScanCounter << std::endl;
