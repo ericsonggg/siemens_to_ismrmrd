@@ -190,7 +190,15 @@ std::vector<std::string> getStringValueArray::operator()(const XNodeParamArray& 
 {
 	//std::cout << "Array: " << node.name_ << ", node.values_.size() = " << node.values_.size() << std::endl;
 	std::vector<std::string> ret;
-
+	for (unsigned int i = 0; i < node.values_.size(); i++) {
+		for(unsigned int j = 0; j < node.values_[i].values_.size(); j++) {
+			std::stringstream ss;
+			std::string svalue;
+			ss << node.values_[i].values_[j];
+			svalue = ss.str();
+			ret.push_back(svalue);
+		}
+	}
 	return ret;
 }
 
@@ -208,7 +216,7 @@ std::vector<std::string> getStringValueArray::operator()(const XNodeParamValue& 
 		std::stringstream ss;
 		std::string svalue;
 		ss << node.values_[i];
-		ss >> svalue;
+		svalue = ss.str();
 		ret.push_back(svalue);
 	}
 	return ret;
